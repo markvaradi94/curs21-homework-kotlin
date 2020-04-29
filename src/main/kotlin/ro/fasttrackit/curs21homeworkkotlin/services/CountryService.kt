@@ -9,7 +9,7 @@ class CountryService(val countryRepository: CountryRepository) : CrudService<Cou
 
     fun allCountries(): List<Country> {
         val countries = mutableListOf<Country>()
-        countryRepository.findAll().forEach(countries::add)
+        countryRepository.findAll().toCollection(countries)
         return countries.toList()
     }
 
@@ -40,7 +40,7 @@ class CountryService(val countryRepository: CountryRepository) : CrudService<Cou
 
     override fun findAll(): Set<Country> {
         val countries = mutableListOf<Country>()
-        countryRepository.findAll().forEach(countries::add)
+        countryRepository.findAll().toCollection(countries)
         return countries.toSet()
     }
 

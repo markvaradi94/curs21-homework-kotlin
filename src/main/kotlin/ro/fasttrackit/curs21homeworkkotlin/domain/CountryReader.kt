@@ -24,12 +24,12 @@ class CountryReader {
     fun readCountries(file: File): List<Country> {
         return BufferedReader(FileReader(file))
                 .lines()
-                .map { readCountry(it) }
+                .map(this::readCountry)
                 .collect(toList())
     }
 
     private fun readCountry(line: String): Country {
-        val elements = line.split("\\|")
+        val elements = line.split("|")
         return Country(
                 elements[0],
                 elements[1],
